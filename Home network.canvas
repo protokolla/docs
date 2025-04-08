@@ -1,0 +1,22 @@
+{
+	"nodes":[
+		{"id":"b67594fce14ec5ad","type":"text","text":"INTERNET","x":-300,"y":-300,"width":250,"height":60,"color":"6"},
+		{"id":"da6c81ac5e404a56","type":"text","text":"Mikrotik Hex Router\n\n*OpenWRT*","x":-300,"y":20,"width":250,"height":88,"color":"5"},
+		{"id":"9de2a91e8f19e877","type":"text","text":"Zyxel Unmanaged Switch","x":-300,"y":-140,"width":250,"height":60,"color":"6"},
+		{"id":"9b1b1f133a33661c","type":"text","text":"Zyxel Unmanaged Switch","x":120,"y":108,"width":250,"height":60,"color":"5"},
+		{"id":"33e35754e7875fd5","type":"text","text":"WiFi","x":120,"y":168,"width":250,"height":50,"color":"4"},
+		{"id":"561b94d06689d42d","type":"text","text":"Proxmox","x":370,"y":-110,"width":250,"height":60,"color":"5"},
+		{"id":"deed1bddbd1216b8","x":495,"y":218,"width":250,"height":51,"color":"4","type":"text","text":"phones"},
+		{"id":"ee7ddb17247fc39b","x":495,"y":300,"width":250,"height":50,"color":"4","type":"text","text":"laptops"}
+	],
+	"edges":[
+		{"id":"31e09c6a6872ac83","fromNode":"da6c81ac5e404a56","fromSide":"right","toNode":"9b1b1f133a33661c","toSide":"left","label":"1 Gbit"},
+		{"id":"47d30a79263f0946","fromNode":"b67594fce14ec5ad","fromSide":"bottom","toNode":"9de2a91e8f19e877","toSide":"top","color":"3","label":"1 Gbit"},
+		{"id":"cdc190e9b5917ec8","fromNode":"9de2a91e8f19e877","fromSide":"bottom","toNode":"da6c81ac5e404a56","toSide":"top","color":"3"},
+		{"id":"7fd93ccc48935291","fromNode":"da6c81ac5e404a56","fromSide":"right","toNode":"33e35754e7875fd5","toSide":"left"},
+		{"id":"794adff167b84e7c","fromNode":"9de2a91e8f19e877","fromSide":"right","toNode":"561b94d06689d42d","toSide":"left","color":"6","label":"public"},
+		{"id":"fc435cd797584759","fromNode":"9b1b1f133a33661c","fromSide":"right","toNode":"561b94d06689d42d","toSide":"left","color":"5","label":"intra"},
+		{"id":"3ca0be516e2dd2cb","fromNode":"33e35754e7875fd5","fromSide":"right","toNode":"deed1bddbd1216b8","toSide":"left"},
+		{"id":"30970de47881f261","fromNode":"33e35754e7875fd5","fromSide":"right","toNode":"ee7ddb17247fc39b","toSide":"left"}
+	]
+}

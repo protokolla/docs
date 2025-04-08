@@ -1,0 +1,1 @@
+For example now the [[fi-proxy01]] server communicates from 100.111.99.121 to 100.94.18.46 ([[fi01]]). Most optimal setup would be from fi-proxy01.protokolla.fi to fi01.protokolla.fi. Problem is that this would require [split horizon DNS setup](https://en.wikipedia.org/wiki/Split-horizon_DNS) as the servers have their public IPs as the hostname.

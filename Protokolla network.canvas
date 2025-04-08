@@ -1,0 +1,18 @@
+{
+	"nodes":[
+		{"id":"0d8fabc552951289","type":"file","file":"Servers/de01.md","x":560,"y":-480,"width":400,"height":400,"color":"1"},
+		{"id":"c4630fcfb79167c2","type":"file","file":"Servers/de04.md","x":1040,"y":-480,"width":400,"height":400,"color":"1"},
+		{"id":"6a53071399294c35","type":"file","file":"Servers/fi-proxy01.md","x":-120,"y":-480,"width":400,"height":400,"color":"5"},
+		{"id":"5d9d5a1393f23e02","type":"text","text":"**INTERNET**","x":280,"y":-960,"width":250,"height":60,"color":"3"},
+		{"id":"c22ead4fd0698a0a","type":"file","file":"Servers/fi01.md","x":-120,"y":160,"width":400,"height":400,"color":"5"}
+	],
+	"edges":[
+		{"id":"1a19bb1fbfd72520","fromNode":"5d9d5a1393f23e02","fromSide":"bottom","toNode":"6a53071399294c35","toSide":"top","color":"3","label":"HTTP"},
+		{"id":"616244ea7ef2d21e","fromNode":"5d9d5a1393f23e02","fromSide":"bottom","toNode":"0d8fabc552951289","toSide":"top","color":"2","label":"DNS"},
+		{"id":"0fdf17e6c6602f67","fromNode":"0d8fabc552951289","fromSide":"left","toNode":"6a53071399294c35","toSide":"right","color":"2","label":"DNS SYNC"},
+		{"id":"806ba282b45d648c","fromNode":"6a53071399294c35","fromSide":"bottom","toNode":"c22ead4fd0698a0a","toSide":"top","color":"5","label":"HTTP Tailscale"},
+		{"id":"493c181a88d76b2d","fromNode":"5d9d5a1393f23e02","fromSide":"bottom","toNode":"0d8fabc552951289","toSide":"left","color":"6","label":"SMTP"},
+		{"id":"e7cfff002be20de5","fromNode":"5d9d5a1393f23e02","fromSide":"bottom","toNode":"c4630fcfb79167c2","toSide":"top","color":"6","label":"SMTP"},
+		{"id":"f7fa68e23d2e7a98","fromNode":"c22ead4fd0698a0a","fromSide":"right","toNode":"c4630fcfb79167c2","toSide":"bottom","color":"6","label":"SMTP Rainloop"}
+	]
+}

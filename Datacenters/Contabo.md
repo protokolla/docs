@@ -1,0 +1,1 @@
+Go to [dashboard](https://my.contabo.com/).

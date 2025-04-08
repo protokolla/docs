@@ -1,0 +1,3 @@
+```sh
+docker ps
+```

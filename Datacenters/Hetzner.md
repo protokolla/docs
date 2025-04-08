@@ -1,0 +1,1 @@
+Go to [dashboard](https://console.hetzner.cloud/projects).
