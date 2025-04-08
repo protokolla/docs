@@ -1,27 +1,4 @@
-## Pufferpabek
-
-**"./srcds_run: 32: ./srcds_run: pushd: not found**
-apt-get install lib32stdc++6
-
-https://www.opengamepanel.org/forum/viewthread.php?thread_id=6764
-
-https://docs.pufferpanel.com/en/3.x/games/srcds/dependencies.html
-
-srcdsun_run
-
-sh => bash #!/bin/bash
-
-./srcds_run: 32: pushd: not found
-
-./srcds_run: 35: popd: not found
-
-root@fr01:/var/lib/pufferpanel/servers/3e4f5f32# mv ./bin/libgcc_s.so.1 ./bin/libgcc_s.so.1.old
-root@fr01:/var/lib/pufferpanel/servers/3e4f5f32# pwd
-/var/lib/pufferpanel/servers/3e4f5f32
-
-https://askubuntu.com/questions/1467404/cs-go-server-error-on-ubuntu-22-04
-
----
+## CS2 retakes server w/ Pterodactyl
 
 Pterodactyl actually works for cs2 and is currently the best option. One should though remember to give enough disk space to the server as sources on the internet mention only 40 GB requirement when the files require at least 50 GB. This caused my installation to fail multiple times in the past. 
 
@@ -40,8 +17,6 @@ host_workshop_map 3436488774 # 1v1 Aim Map
 mp_humanteam 1 # allows human on ct side
 bot_kick # kick all bots (previously bot_kickall)
 ```
-
-### CS2 retakes server w/ Pterodactyl
 
 First of all you have created a new node and it has the correct ports allocated to it (`27015` and `27015`). New server creation happens from the admin panel (for us it is [here](https://host.protokolla.fi/admin/servers)).
 
@@ -105,3 +80,29 @@ Server features:
 #### No knife and no autobuy
 
 The retakesallocator plugin was problematic and printed a startup error to server log on the server boot. It might have had some corrupted files as the server had its disk space full for some time. The issue was fixed by reinstalling the plugin.
+
+## Previously tried solutions - Pufferpanel
+
+I encountered multiple issues with Pufferpanel. Thus I decided not to use it. The problem might have been that I used the beta release of version 3.0. 
+
+Problems and their solutions:
+
+CS2 server doesn't start and outputs:
+
+Problem: `"./srcds_run: 32: ./srcds_run: pushd: not found`
+Solution: `apt-get install lib32stdc++6`
+
+Problem:
+```sh
+./srcds_run: 32: pushd: not found
+./srcds_run: 35: popd: not found
+```
+Solution: Edit the `srcdsun_run` file. Change the beginning to `#!/bin/bash` from `#!/bin/sh`
+
+Problem: something
+Solution: Edit the server file `/var/lib/pufferpanel/servers/3e4f5f32`. Run command `mv ./bin/libgcc_s.so.1 ./bin/libgcc_s.so.1.old`.
+
+Resources:
+- https://www.opengamepanel.org/forum/viewthread.php?thread_id=6764
+- https://docs.pufferpanel.com/en/3.x/games/srcds/dependencies.html (install these)
+- https://askubuntu.com/questions/1467404/cs-go-server-error-on-ubuntu-22-04

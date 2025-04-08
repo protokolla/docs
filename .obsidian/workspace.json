@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Datacenters/Contabo.md",
+                "file": "Tasks/CS2 server install.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Contabo"
+              "title": "CS2 server install"
             }
           }
         ]
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Home network.canvas",
+                "file": "Tasks/CS2 server install.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Home network"
+              "title": "Outgoing links from CS2 server install"
             }
           },
           {
@@ -142,21 +142,31 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Home network.canvas",
+                "file": "Tasks/CS2 server install.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Home network"
+              "title": "Outline of CS2 server install"
+            }
+          },
+          {
+            "id": "2b89db86fe44f636",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 217.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -165,11 +175,13 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "a29d2a2a8308e952",
   "lastOpenFiles": [
+    "Datacenters/Contabo.md",
     "Datacenters/Hetzner.md",
     "Issues/PRTKL01 - Use FQDNS in intranet.md",
     "Issues/PRTKL02 - de02 login issues.md",
@@ -177,8 +189,7 @@
     "Home network.canvas",
     "Protokolla network.canvas",
     "README.md",
-    "Untitled.md",
-    "Datacenters/Contabo.md",
+    "Tasks/CS2 server install.md",
     "Servers/de05.md",
     "Servers/de04.md",
     "Servers/fi01.md",
