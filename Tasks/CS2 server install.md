@@ -2,23 +2,11 @@
 
 Pterodactyl actually works for cs2 and is currently the best option. One should though remember to give enough disk space to the server as sources on the internet mention only 40 GB requirement when the files require at least 50 GB. This caused my installation to fail multiple times in the past. 
 
+First of all you have created a new node and it has the correct ports allocated to it (`27015` and `27015`). New server creation happens from the admin panel (for us it is [here](https://host.protokolla.fi/admin/servers)).
+
 After the server creation you should just wait (and maybe monitor download speeds from `btop`). When downloading has stopped (the server doesn't constantly go over 100 Mbps) you can start it from the Pterodactyl panel.
 
 Hosting workshop maps happens by first starting the server to default map. Then execute the `host_workshop_map 3074758439` command to change the map to an [Only Up](https://steamcommunity.com/sharedfiles/filedetails/?id=3074758439) map. A good link about the topic can be found [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3070689635).
-
-```sh
-mp_autokick 0 # allow team to be funny
-
-# Maps
-host_workshop_map 3219506727 # (cs2 implementation of de_lake)
-host_workshop_map 3436488774 # 1v1 Aim Map
-
-# If the server is problematic with human joining ct side
-mp_humanteam 1 # allows human on ct side
-bot_kick # kick all bots (previously bot_kickall)
-```
-
-First of all you have created a new node and it has the correct ports allocated to it (`27015` and `27015`). New server creation happens from the admin panel (for us it is [here](https://host.protokolla.fi/admin/servers)).
 
 Go to [Metamod:Source](https://www.metamodsource.net/downloads.php/?branch=master)s website and download the latest dev build. Extract the .tar.gz file with 7zip. Move the `addons`-folder to `/game/csgo` directory on the Pterodactyl container (over SFTP).
 
@@ -34,22 +22,6 @@ _This was basically quick see through of the tutorial [here](https://docs.csshar
 Download the latest [cs2-retakes](https://github.com/B3none/cs2-retakes) from their Github releases [page](https://github.com/B3none/cs2-retakes/releases/latest). Extract the zip file and copy the `RetakesPlugin` to `/game/csgo/addons/counterstrikesharp/plugins` directory on the Pterodactyl container.
 
 > - Download the latest shared plugin and put it into your `addons/counterstrikesharp/shared` directory.
-
-cs2 retakes commans:
-```sh
-css_mapconfigs # list map configs
-css_mapconfig de_dust2
-
-# change map to mirage and load configs
-map de_mirage
-css_mapconfig de_mirage
-
-map de_nuke
-css_mapconfig de_nuke
-
-map de_inferno
-css_mapconfig de_inferno
-```
 
 As the cs2-retakes plugin specifies you should use a custom weapon system (allocator), so your teammates can play with m4a4 (even though the m4a1-s is superior).
 
@@ -74,7 +46,40 @@ mp_afterroundmoney 65535
 Server features:
 - Gun based on the economy
 - You can buy another gun
-- There is awp queue (join it with `!awp`)
+- There is awoopa queue (join it with `!awp`)
+### Useful commands
+
+**basic commands**
+
+```sh
+mp_autokick 0 # allow team to be funny
+
+# Maps
+host_workshop_map 3219506727 # (cs2 implementation of de_lake)
+host_workshop_map 3436488774 # 1v1 Aim Map
+
+# If the server is problematic with human joining ct side
+mp_humanteam 1 # allows human on ct side
+bot_kick # kick all bots (previously bot_kickall)
+```
+
+**cs2 retakes commands**
+
+```sh
+css_mapconfigs # list map configs
+css_mapconfig de_dust2
+
+# change map to mirage and load configs
+map de_mirage
+css_mapconfig de_mirage
+
+map de_nuke
+css_mapconfig de_nuke
+
+map de_inferno
+css_mapconfig de_inferno
+```
+
 ### Issues
 
 #### No knife and no autobuy
