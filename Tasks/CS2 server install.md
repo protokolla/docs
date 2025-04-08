@@ -1,16 +1,25 @@
 ## CS2 retakes server w/ Pterodactyl
 
-Pterodactyl actually works for cs2 and is currently the best option. One should though remember to give enough disk space to the server as sources on the internet mention only 40 GB requirement when the files require at least 50 GB. This caused my installation to fail multiple times in the past. 
+### Background
 
-First of all you have created a new node and it has the correct ports allocated to it (`27015` and `27015`). New server creation happens from the admin panel (for us it is [here](https://host.protokolla.fi/admin/servers)).
+I was looking for a solution to host a cs2 server for me and my friends. I tested couple solutions and decided to stick with Pterodactyl for the best support and scalability. I tried Docker and Pufferpanel before that.
 
-After the server creation you should just wait (and maybe monitor download speeds from `btop`). When downloading has stopped (the server doesn't constantly go over 100 Mbps) you can start it from the Pterodactyl panel.
+In the process I learned couple things:
+- Internet lies about the required disk space (it is at LEAST 50 GB and NOT 40 GB) => causes silent installation failure in Pterodactyl
+- Pterodactyl doesn't have any good indicator about the installation process status (I decided to use btop and watch how much new network traffic was generated)
 
-Hosting workshop maps happens by first starting the server to default map. Then execute the `host_workshop_map 3074758439` command to change the map to an [Only Up](https://steamcommunity.com/sharedfiles/filedetails/?id=3074758439) map. A good link about the topic can be found [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3070689635).
+Server features after installation:
+- cs2 retakes server w/ multiple maps
+- Gun based on the economy
+- You can buy another gun
+- There is awoopa queue (join it with `!awp`)
+### Installation
+
+---
 
 Go to [Metamod:Source](https://www.metamodsource.net/downloads.php/?branch=master)s website and download the latest dev build. Extract the .tar.gz file with 7zip. Move the `addons`-folder to `/game/csgo` directory on the Pterodactyl container (over SFTP).
 
-Edit the file `/game/csgo/gameinfo.gi` and search for word `Game_LowViolence`. Add the following include text below it if it doesn't exist:
+Edit the file `/game/csgo/gameinfo.gi` and search for word `Game_LowViolence`. Add the following text below it if it doesn't exist:
 ```
 Game	csgo/addons/metamod
 ```
@@ -19,21 +28,34 @@ Download the latest release from [CounterStrikeSharp](https://github.com/roflmuf
 
 _This was basically quick see through of the tutorial [here](https://docs.cssharp.dev/docs/guides/getting-started.html)._
 
-Download the latest [cs2-retakes](https://github.com/B3none/cs2-retakes) from their Github releases [page](https://github.com/B3none/cs2-retakes/releases/latest). Extract the zip file and copy the `RetakesPlugin` to `/game/csgo/addons/counterstrikesharp/plugins` directory on the Pterodactyl container.
+---
 
-> - Download the latest shared plugin and put it into your `addons/counterstrikesharp/shared` directory.
+Adding the correct plugins can be quite a tedious work so we create a local copy of the desired outcome and just transfer it to the server.
 
-As the cs2-retakes plugin specifies you should use a custom weapon system (allocator), so your teammates can play with m4a4 (even though the m4a1-s is superior).
+Your folder structure should look as following. The part in paranthesis indicates whether you have to create the folder or download the file from Github. If there is a Github link, go to releases and download the zip with the folder name.
 
-Download the zip from [here](https://github.com/yonilerner/cs2-retakes-allocator) and extract the files. Place the `RetakesAllocator` folder to `/game/csgo/addons/counterstrikesharp/plugins`. 
+```
+csgo (create)
+└── addons (create)
+    └── counterstrikesharp (create)
+        ├── plugins (create)
+        │   ├── InstadefusePlugin (github - https://github.com/B3none/cs2-instadefuse)
+        │   ├── RetakesAllocator (github - https://github.com/yonilerner/cs2-retakes-allocator)
+        │   └── RetakesPlugin (github - https://github.com/B3none/cs2-retakes)
+        └── shared
+            └── RetakesPluginShared (github - https://github.com/B3none/cs2-retakes)
+```
 
-After that edit the `retakes_config.json` file in `/game/csgo/addons/counterstrikesharp/plugins/RetakesPlugin` to disable `EnableFallbackAllocation`. 
+Copy the above files to the `/game` directory on the Pterodactyl server.
+
+
+After that edit the `/game/csgo/addons/counterstrikesharp/plugins/RetakesPlugin/retakes_config.json` file to disable `EnableFallbackAllocation`. 
 
 ```json
 "EnableFallbackAllocation": false,
 ```
 
-`/game/csgo/cfg/cs2-retakes/retakes.cfg`
+Modify file `/game/csgo/cfg/cs2-retakes/retakes.cfg` to include the following lines:
 ```sh
 // allow buying anywhere so your teammates can buy the SUPERIOR m4a4
 mp_buy_anywhere 1
@@ -42,11 +64,6 @@ mp_maxmoney 65535
 mp_startmoney 65535
 mp_afterroundmoney 65535
 ```
-
-Server features:
-- Gun based on the economy
-- You can buy another gun
-- There is awoopa queue (join it with `!awp`)
 ### Useful commands
 
 **basic commands**
@@ -55,6 +72,7 @@ Server features:
 mp_autokick 0 # allow team to be funny
 
 # Maps
+host_workshop_map 3074758439 # Only Up
 host_workshop_map 3219506727 # (cs2 implementation of de_lake)
 host_workshop_map 3436488774 # 1v1 Aim Map
 
